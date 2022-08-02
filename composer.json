@@ -1,0 +1,16 @@
+{
+    "name": "ignatha/namespace",
+    "description": "belajar namespace",
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        }
+    },
+    "authors": [
+        {
+            "name": "ignatha",
+            "email": "prabowoid.2@gmail.com"
+        }
+    ],
+    "require": {}
+}

@@ -11,7 +11,7 @@ $router->get('/', function(){
 
 $router->get('/siswa', SiswaServices::class . '::execute');
 $router->post('/siswa', SiswaServices::class . '::postSiswa');
-$router->post('/siswa/update', SiswaServices::class . '::updateSiswa');
+$router->put('/siswa/update', SiswaServices::class . '::updateSiswa');
 
 $router->addNotFoundHandler(function(){
     header("Status: 404 Not Found");

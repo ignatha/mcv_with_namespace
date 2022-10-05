@@ -7,6 +7,8 @@ class Router
 	private array $handlers;
 	private const METHOD_POST = 'POST';
 	private const METHOD_GET = 'GET';
+	private const METHOD_PUT = 'PUT';
+	private const METHOD_DELETE = 'DELETE';
 	private $notFoundHandler;
 
 	function get(string $path, $handler): void
@@ -17,6 +19,16 @@ class Router
 	function post(string $path, $handler): void
 	{
 		$this->addHandler(self::METHOD_POST, $path,$handler);
+	}
+	
+	function put(string $path, $handler): void
+	{
+		$this->addHandler(self::METHOD_PUT, $path,$handler);
+	}
+	
+	function delete(string $path, $handler): void
+	{
+		$this->addHandler(self::METHOD_DELETE, $path,$handler);
 	}
 
 	private function addHandler(string $method, string $path, $handler): void
@@ -58,7 +70,7 @@ class Router
 			}		
 
 		if (!$callback) {
-			header(header: "HTTP/1.0 404 Not Found");
+			header("HTTP/1.0 404 Not Found");
 			if (!empty($this->notFoundHandler)) {
 				$callback = $this->notFoundHandler;
 			}

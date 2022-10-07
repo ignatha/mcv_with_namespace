@@ -28,7 +28,7 @@ $("#updateSiswa").submit(function (event) {
   };
  
   $.ajax({
-    type: "POST",
+    type: "PUT",
     url: '/siswa/update',
     data: formData,
     dataType: "json",
@@ -42,13 +42,13 @@ $("#updateSiswa").submit(function (event) {
 $('#key').on('click', '.KeyDelete[data-remote]', function (event) {
   event.preventDefault();
   var formData = {
-    id: $(this).data('remote'),
+    nis: $(this).data('remote'),
     method: '_DELETE',
   };
  
   $.ajax({
     type: "DELETE",
-    url: '/generate',
+    url: '/siswa/delete',
     data: formData,
     dataType: "json",
     encode: true,

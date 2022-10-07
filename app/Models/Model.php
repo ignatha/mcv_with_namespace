@@ -2,15 +2,15 @@
 
 namespace App\Models;
 
-use App\Config\Connect;
+use App\Services\Connect;
 
 class Model
 {
-    public $con;
 
-    public function con()
-    {
-        $this->con = new Connect;
-        return $this->con;
+    use Connect;
+
+    public function __construct(){
+
+        $this->db = $this->db();
     }
 }

@@ -76,8 +76,10 @@ class Router
 			}
 		}
 
+		parse_str(file_get_contents('php://input'),$post_vars);
+
 		call_user_func_array($callback, [
-			array_merge($_GET, $_POST)
+			array_merge($_GET, $_POST,$post_vars)
 		]);
 	}
 }

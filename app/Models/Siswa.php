@@ -11,18 +11,17 @@ class Siswa extends Model
 
 		$sekarang = new \DateTime("NOW");
 
-		$con = $this->con()->db();
-        $stmt = $con->prepare("SELECT MAX(nis) AS kode_terakhir FROM siswa WHERE Date(created_at) = CURDATE()");
-        $con->beginTransaction();
+        $stmt = $this->db->prepare("SELECT MAX(nis) AS kode_terakhir FROM siswa WHERE Date(created_at) = CURDATE()");
         $stmt->execute();
-        $con->commit();
         $data = $stmt->fetch(\PDO::FETCH_ASSOC);
 
         if (isset($data['kode_terakhir'])) {
-        	$newNumber = explode("D", $data['kode_terakhir']);
-        	$newNumber = $sekarang->format("ymd") . "D" . $newNumber[1]+1;
+        	$nis = explode("D", $data['kode_terakhir']);
+            $number = (int) $nis[1] + 1;
+            var_dump((int) $nis[1]);
+        	$newNumber = (string) $sekarang->format("ymd")."D".$number;
         } else {
-        	$newNumber = $sekarang->format("ymd") . "D" . 1;
+        	$newNumber = (string) $sekarang->format("ymd")."D".(int)1;
         }
         return $newNumber;
     }

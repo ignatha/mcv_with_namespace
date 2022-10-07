@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Config;
+namespace App\Services;
 
-class Connect
+trait Connect
 {
     public function db()
     {
         $host = "localhost";
-        $dbname = "maxxima";
+        $dbname = "mvc";
         $username = "root";
         $password = "";
         $result = new \PDO("mysql:host={$host};dbname={$dbname}", $username, $password);

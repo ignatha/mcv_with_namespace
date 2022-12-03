@@ -10,9 +10,6 @@ $router->get('/', function(){
 });
 
 $router->get('/siswa', SiswaController::class . '::execute');
-$router->post('/siswa', SiswaController::class . '::postSiswa');
-$router->put('/siswa/update', SiswaController::class . '::updateSiswa');
-$router->delete('/siswa/delete', SiswaController::class . '::deleteSiswa');
 
 $router->addNotFoundHandler(function(){
     header("Status: 404 Not Found");
